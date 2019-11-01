@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SIGNUP</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script type="text/javascript">
+		function LOL(){
+			var x=document.getElementById("username").value;
+			var y=document.getElementById("password").value;
+			var z=document.getElementById("nickname").value;
+			if(!x||!y||!z){
+				alert("PLEASE FILL IN ALL THE DETAILS");
+				return;
+			}
+			var xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange=function(){
+				if(this.readyState==4&&this.status==200){
+					var check=this.responseText;
+						if(check=="lol"){
+			document.getElementById("demo").innerHTML="SIGNUP SUCESSFUL PLEASE <a href='LOGINLIB.html'>LOGIN</a>";
+		}
+		else{
+			document.getElementById("demo").innerHTML=check;
+		}
+				}
+
+			};
+			xhttp.open("POST","SIGNUPLIB.php",true);
+			xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhttp.send("username="+x+"&password="+y+"&nickname="+z);
+
+		}
+	</script>
+	<style type="text/css">
+			*{
+				margin: 0px;
+		box-sizing: border-box;
+	}
+	#login{
+		position: fixed;
+		top:100px;
+		left: 33%;
+		height: 400px;
+		width:400px;
+		z-index: 1;
+		text-align: center;
+	}
+	.logins{
+		padding: 5px;
+		width: 50%;
+		transition: border-color 2s ease;
+		border-bottom: 2px solid grey;
+		border-top:none;
+		border-left: none;
+		border-right: none;
+		outline: none;
+	}
+	input:focus{
+		border-color:green;
+	}
+	#intro{
+		text-align: center;
+	}
+	span{
+		font-size: 25px;
+	}
+	img{
+		height: 100px;
+		width: 150px;
+	}
+	#signupbut{
+		border-radius: 5px;
+		border:none;
+		padding: 5px;
+		background-color: green;
+		color:white;
+		outline: none;
+		transition: all 1s ease;
+	}
+	#signupbut:hover{
+		background-color: lightgreen;
+
+	}
+	@media only screen and (max-width:768px){
+		#login{
+			width: 100%;
+			position: static;
+		}
+		.logins{
+			width: 70%;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div id="intro">
+		<div id="logo">
+			<img src="lol.jpg">
+		</div>
+		<span>ONLINE LIBRARY MANAGEMENT SYSTEM</span>
+	</div>
+	<div id="login">
+		<input type="text" name="username" class="logins" style="margin-top: 100px;" placeholder="USN" id="username" autocomplete="off"><br><br>
+		<input type="password" name="password" class="logins" placeholder="PASSWORD" id="password"><br><br>
+		<input type="text" name="nickname" id="nickname" class="logins" placeholder="NAME" autocomplete="off"><br><br>
+		<button type="button" onclick="LOL()" id="signupbut">SIGNUP</button><br><br>
+		<p id="demo"></p>
+	</div>
+</body>
+</html>

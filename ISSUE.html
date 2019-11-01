@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+ 	<title>ISSUE BOOKS</title>
+ 	<link rel="stylesheet" type="text/css" href="COMNAVBAR.css">
+ 	<style type="text/css">
+		#inputs{
+			width: 50%;
+			position: relative;
+			top:100px;
+			height: 350px;
+			left: 25%;
+		}
+		input{
+			border-bottom: 2px solid grey;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			position: absolute;
+			width: 50%;
+			left: 25%;
+			transition:border-color 2s ease;
+		}
+		input:focus{
+			border-color: green;
+			outline: none;
+		}
+		#issue{
+			position: absolute;
+			width: 33.33%;
+			left: 33.33%;
+		}
+
+	</style>
+ 	<script type="text/javascript">
+ 		function issue(){
+ 			var x=document.getElementById("bid").value;
+ 			var y=document.getElementById("username").value;
+ 			if(x==''||y==''){
+ 				alert("Please fill in all the details");
+ 				return;
+ 			}
+ 			var xhttp=new XMLHttpRequest();
+		xhttp.onreadystatechange=function(){
+			if(this.readyState==4&&this.status==200){
+				document.getElementById("demo").innerHTML=this.responseText;
+			}
+		};
+		xhttp.open("POST","ISSUE.php",true);
+		xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhttp.send("bid="+x+"&username="+y);
+ 		}
+ 	</script>
+ </head>
+ <body>
+  <div id="navbar">
+ 	<a href="ADDBOOKS.html">ADD NEW BOOKS</a>
+ 	<a href="ISSUE.html">ISSUE BOOK</a>
+ 	<a href="RETURN.html">RETURN BOOK</a>
+ 	<a href="LOGINLIB.html" style="float: right;">LOGOUT</a>
+ </div>
+ <div id="inputs">
+ 	<input type="number" id="bid" placeholder="BOOK ID"><br><br>
+ 	<input type="text" id="username" placeholder="USN"><br><br>
+ 	<button type="button" onclick="issue()" id="issue">ISSUE BOOK</button><br><br>
+ 	<p id="demo" style="position: absolute;left: 20%;"></p>
+ </div>
+ </body>
+ </html>

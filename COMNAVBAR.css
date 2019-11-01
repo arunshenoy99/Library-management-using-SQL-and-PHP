@@ -1,0 +1,27 @@
+*{
+	margin: 0px;
+	box-sizing: border-box;
+}
+a{
+	display: inline-block;
+	padding: 10px;
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	float: left;
+	transition: all 1s;
+
+}
+a:hover{
+	background-color: green;
+}
+#navbar{
+	width: 100%;
+	background-color: black;
+	overflow:auto;
+}
+#navbar:after{
+	content: "";
+	display: table;
+	clear:both;
+}
